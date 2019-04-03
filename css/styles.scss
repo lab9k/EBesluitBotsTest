@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  height: 100vh;
+  .element {
+    flex-grow: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    min-height: 100%;
+  }
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
