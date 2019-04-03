@@ -114,7 +114,6 @@
       window.WebChat.renderWebChat(
         {
           directLine: window.WebChat.createDirectLine({ token }),
-          userID: 'citybot-alexandria',
           styleOptions,
         },
         document.getElementById('webchat'),
