@@ -26,7 +26,8 @@
     // Avatar
     avatarSize: 40,
     // eslint-disable-next-line global-require
-    botAvatarImage: require('../img/Citybot_Icon.jpg'),
+    botAvatarImage:
+      'https://png.pngtree.com/element_our/png_detail/20181206/users-vector-icon-png_260862.jpg',
     botAvatarInitials: 'NA',
     userAvatarImage: 'https://avatars3.githubusercontent.com/u/10141933?size=64',
     userAvatarInitials: 'SG',
