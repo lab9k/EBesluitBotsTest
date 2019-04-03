@@ -16,7 +16,7 @@
     subtle: DEFAULT_SUBTLE,
 
     // Word break
-    messageActivityWordBreak: 'normal', // 'normal' || 'break-all' || 'break-word' || 'keep-all'
+    messageActivityWordBreak: 'break-word', // 'normal' || 'break-all' || 'break-word' || 'keep-all'
 
     // fonts
     primaryFont: fontFamily(['Calibri', 'Helvetica Neue', 'Arial', 'sans-serif']),
@@ -25,18 +25,19 @@
 
     // Avatar
     avatarSize: 40,
-    botAvatarImage: '',
-    botAvatarInitials: 'AW',
-    userAvatarImage: '',
+    // eslint-disable-next-line global-require
+    botAvatarImage: require('../img/Citybot_Icon.jpg'),
+    botAvatarInitials: 'NA',
+    userAvatarImage: 'https://avatars3.githubusercontent.com/u/10141933?size=64',
     userAvatarInitials: 'SG',
 
     // Bubble
     bubbleBackground: 'White',
     bubbleBorder: 'solid 1px #E6E6E6',
-    bubbleBorderRadius: 2,
+    bubbleBorderRadius: 10,
     bubbleFromUserBackground: 'White',
     bubbleFromUserBorder: 'solid 1px #E6E6E6',
-    bubbleFromUserBorderRadius: 2,
+    bubbleFromUserBorderRadius: 10,
     bubbleFromUserTextColor: 'Black',
     bubbleImageHeight: 240,
     bubbleMaxWidth: 480, // screen width = 600px
