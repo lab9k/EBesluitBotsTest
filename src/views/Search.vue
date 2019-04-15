@@ -38,6 +38,14 @@
                 <v-list-tile-title v-text="item.title" />
                 <v-list-tile-sub-title v-text="item.confidence || item.scoreInPercent" />
               </v-list-tile-content>
+              <v-list-tile-action>
+                <v-btn
+                  color="primary"
+                  @click="downloadItem(item)"
+                >
+                  Download
+                </v-btn>
+              </v-list-tile-action>
             </v-list-tile>
           </v-list>
         </v-flex>
@@ -53,7 +61,7 @@ export default {
   data() {
     return {
       valid: false,
-      question: '',
+      question: 'Waar kan ik mijn woonwagen parkeren?',
       questionRules: [q => !!q || 'Question in required'],
       items: [{ title: 'Hello World', icon: true }],
     };
@@ -67,6 +75,20 @@ export default {
       console.log(this.question);
       if (this.valid) {
         this.$store.dispatch(actions.ASK_QUESTION, this.question);
+      }
+    },
+    downloadItem(item) {
+      console.log(item);
+      if (item.resourceURI) {
+        this.$store.dispatch(actions.DOWNLOAD_FILE, {
+          path: item.resourceURI,
+          provider: 'nalantis',
+        });
+      } else {
+        this.$store.dispatch(actions.DOWNLOAD_FILE, {
+          path: `https://digipolis-poc.alexandria.works/v0.1/documents/${item.uuid}`,
+          provider: 'alexandria.works',
+        });
       }
     },
   },
