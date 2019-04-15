@@ -11,8 +11,11 @@ export default {
     // await download(
     //   `https://chatbotsqueries.herokuapp.com/dl/download-proxy?url=${path}&name=test123.pdf&provider=nalantis`,
     // );
+    const base = process.env.NODE_ENV === 'production'
+      ? 'https://chatbotsqueries.herokuapp.com'
+      : 'localhost:3000';
     const data = await axios.get(
-      `http://localhost:3000/dl/download-proxy?url=${path}&name=download.pdf&provider=${provider}`,
+      `${base}/dl/download-proxy?url=${path}&name=download.pdf&provider=${provider}`,
       { responseType: 'arraybuffer' },
     );
     const url = window.URL.createObjectURL(new Blob([data.data]));
