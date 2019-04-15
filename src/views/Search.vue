@@ -31,20 +31,30 @@
               class="list-tile-item"
             >
               <v-list-tile-avatar>
-                <img :src="'https://avatars3.githubusercontent.com/u/10141933?size=64'">
+                <img
+                  :src="item.from === 'nalantis'?
+                    nalantisIconUrl:
+                    'https://picsum.photos/64'"
+                >
               </v-list-tile-avatar>
 
               <v-list-tile-content>
                 <v-list-tile-title v-text="item.title" />
-                <v-list-tile-sub-title v-text="item.confidence || item.scoreInPercent" />
+                <v-list-tile-sub-title
+                  v-text="`confidence: ${ item.scoreInPercent
+                    || item.confidence*100}`"
+                />
               </v-list-tile-content>
               <v-list-tile-action>
-                <v-btn
-                  color="primary"
-                  @click="downloadItem(item)"
-                >
-                  Download
-                </v-btn>
+                <v-icon @click="downloadItem(item)">
+                  cloud_download
+                </v-icon>
+                <v-icon @click="vote(true,item)">
+                  thumb_up
+                </v-icon>
+                <v-icon @click="vote(false,item)">
+                  thumb_down
+                </v-icon>
               </v-list-tile-action>
             </v-list-tile>
           </v-list>
@@ -68,6 +78,10 @@ export default {
   },
   computed: {
     ...mapGetters(['docsOnConfidence']),
+    nalantisIconUrl() {
+      // eslint-disable-next-line global-require
+      return require('../assets/Citybot_Icon.jpg');
+    },
   },
   methods: {
     submit(e) {
@@ -91,6 +105,9 @@ export default {
         });
       }
     },
+    vote(state, item) {
+      this.$store.dispatch(actions.VOTE, { state, item, question: this.question });
+    },
   },
 };
 </script>
@@ -102,5 +119,8 @@ export default {
 }
 .theme--light.v-list {
   background-color: #fafafa;
+}
+.v-list--three-line .v-list__tile {
+  height: 120px;
 }
 </style>
