@@ -25,6 +25,7 @@ export default {
     link.href = url;
     link.setAttribute('download', title); // or any other extension
     link.style.display = 'none';
+    link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
   },
