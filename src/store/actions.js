@@ -27,7 +27,9 @@ export default {
     link.click();
     console.log(data);
   },
-  async [actions.VOTE](state, { state: positive, item, question }) {
-    questionService.vote(positive, item, question);
+  async [actions.VOTE](state, {
+    state: positive, item, question, feedbackText,
+  }) {
+    questionService.vote(positive, item, question, feedbackText);
   },
 };

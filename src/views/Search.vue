@@ -31,19 +31,12 @@
               class="list-tile-item"
             >
               <v-list-tile-avatar>
-                <img
-                  :src="item.from === 'nalantis'?
-                    nalantisIconUrl:
-                    'https://picsum.photos/64'"
-                >
+                <img :src="item.avatar">
               </v-list-tile-avatar>
 
               <v-list-tile-content>
                 <v-list-tile-title v-text="item.title" />
-                <v-list-tile-sub-title
-                  v-text="`confidence: ${ item.scoreInPercent
-                    || item.confidence*100}`"
-                />
+                <v-list-tile-sub-title v-text="`${ item.content.substring(0,150) }`" />
               </v-list-tile-content>
               <v-list-tile-action>
                 <v-icon @click="downloadItem(item)">
@@ -52,7 +45,7 @@
                 <v-icon @click="vote(true,item)">
                   thumb_up
                 </v-icon>
-                <v-icon @click="vote(false,item)">
+                <v-icon @click="add_feedback(false,item)">
                   thumb_down
                 </v-icon>
               </v-list-tile-action>
@@ -61,6 +54,47 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="600px"
+    >
+      <v-card>
+        <v-card-title>
+          <span class="headline">User Profile</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field
+                  v-model="feedbackText"
+                  label="Feedback"
+                  required
+                />
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn
+            color="blue darken-1"
+            flat
+            @click="dialog = false"
+          >
+            Close
+          </v-btn>
+          <v-btn
+            color="blue darken-1"
+            flat
+            @click="vote(false,currentItem)"
+          >
+            Save
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 <script>
@@ -74,14 +108,17 @@ export default {
       question: 'Waar kan ik mijn woonwagen parkeren?',
       questionRules: [q => !!q || 'Question in required'],
       items: [{ title: 'Hello World', icon: true }],
+      dialog: false,
+      currentItem: {},
+      feedbackText: '',
     };
   },
   computed: {
     ...mapGetters(['docsOnConfidence']),
-    nalantisIconUrl() {
-      // eslint-disable-next-line global-require
-      return require('../assets/Citybot_Icon.jpg');
-    },
+    // nalantisIconUrl() {
+    //   // eslint-disable-next-line global-require
+    //   return require('../assets/Citybot_Icon.jpg');
+    // },
   },
   methods: {
     submit(e) {
@@ -106,7 +143,16 @@ export default {
       }
     },
     vote(state, item) {
-      this.$store.dispatch(actions.VOTE, { state, item, question: this.question });
+      this.$store.dispatch(actions.VOTE, {
+        state,
+        item,
+        question: this.question,
+        feedbackText: this.feedbackText,
+      });
+    },
+    add_feedback(positive, item) {
+      this.currentItem = item;
+      this.dialog = true;
     },
   },
 };

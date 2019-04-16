@@ -9,8 +9,10 @@ export default new (class QuestionService {
     return axios.post(`${this.baseurl}/responses`, { question });
   }
 
-  async vote(positive, item, question) {
-    return axios.post(`${this.baseurl}/vote`, { positive, item, question });
+  async vote(positive, item, question, feedbackText) {
+    return axios.post(`${this.baseurl}/vote`, {
+      positive, item, question, feedbackText,
+    });
   }
 })(
   process.env.NODE_ENV === 'production'
