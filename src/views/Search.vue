@@ -81,7 +81,7 @@
           <v-btn
             color="blue darken-1"
             flat
-            @click="dialog = false"
+            @click="dialog = false;feedbackText = ''"
           >
             Close
           </v-btn>
@@ -149,6 +149,8 @@ export default {
         question: this.question,
         feedbackText: this.feedbackText,
       });
+      this.dialog = false;
+      this.feedbackText = '';
     },
     add_feedback(positive, item) {
       this.currentItem = item;
