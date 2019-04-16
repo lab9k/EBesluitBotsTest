@@ -4,7 +4,9 @@ import questionService from '../services/question.service';
 
 export default {
   async [actions.ASK_QUESTION]({ commit }, question) {
+    commit(mutations.REMOVE_REPLIES);
     const { data } = await questionService.query(question);
+
     commit(mutations.UPDATE_REPLIES, data);
   },
   async [actions.DOWNLOAD_FILE](state, { path, provider }) {

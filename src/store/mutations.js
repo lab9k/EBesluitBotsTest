@@ -29,4 +29,7 @@ export default {
     const docs = extractDocuments(replies);
     state.replies = docs;
   },
+  [mutations.REMOVE_REPLIES](state) {
+    state.replies = [];
+  },
 };

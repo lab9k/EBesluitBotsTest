@@ -5,5 +5,6 @@ export const actions = {
 };
 export const mutations = {
   UPDATE_REPLIES: 'update_replies',
+  REMOVE_REPLIES: 'remove_replies',
 };
 export default { actions, mutations };
