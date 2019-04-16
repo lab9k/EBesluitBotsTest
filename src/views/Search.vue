@@ -123,13 +123,11 @@ export default {
   methods: {
     submit(e) {
       e.preventDefault();
-      console.log(this.question);
       if (this.valid) {
         this.$store.dispatch(actions.ASK_QUESTION, this.question);
       }
     },
     downloadItem(item) {
-      console.log(item);
       if (item.resourceURI) {
         this.$store.dispatch(actions.DOWNLOAD_FILE, {
           path: item.resourceURI,

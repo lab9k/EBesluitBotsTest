@@ -5,8 +5,8 @@ module.exports = {
   },
   extends: ['plugin:vue/recommended', '@vue/airbnb'],
   rules: {
-    'no-console': 'off',
-    'no-debugger': 'off',
+    'no-console': 'warn',
+    'no-debugger': 'warn',
     'no-param-reassign': [
       'error',
       {

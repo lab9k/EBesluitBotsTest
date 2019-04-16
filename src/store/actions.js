@@ -27,7 +27,6 @@ export default {
     link.style.display = 'none';
     document.body.appendChild(link);
     link.click();
-    console.log(data);
   },
   async [actions.VOTE](state, {
     state: positive, item, question, feedbackText,
