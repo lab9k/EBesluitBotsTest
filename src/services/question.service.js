@@ -10,9 +10,13 @@ export default new (class QuestionService {
   }
 
   async vote(positive, item, question, feedbackText) {
-    return axios.post(`${this.baseurl}/vote`, {
-      positive, item, question, feedbackText,
-    });
+    const postData = {
+      positive,
+      item,
+      question,
+      feedbackText,
+    };
+    return axios.post(`${this.baseurl}/vote`, postData);
   }
 })(
   process.env.NODE_ENV === 'production'
