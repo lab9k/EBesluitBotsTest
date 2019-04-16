@@ -115,10 +115,6 @@ export default {
   },
   computed: {
     ...mapGetters(['docsOnConfidence']),
-    // nalantisIconUrl() {
-    //   // eslint-disable-next-line global-require
-    //   return require('../assets/Citybot_Icon.jpg');
-    // },
   },
   methods: {
     submit(e) {

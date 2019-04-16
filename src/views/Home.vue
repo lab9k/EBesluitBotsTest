@@ -47,6 +47,7 @@ export default {
           this.$refs.webchatNalantis,
         );
       })
+      // eslint-disable-next-line no-console
       .catch(error => console.error(error));
     fetch('https://webchat.botframework.com/api/tokens', {
       headers: {
@@ -59,11 +60,12 @@ export default {
         window.WebChat.renderWebChat(
           {
             directLine: window.WebChat.createDirectLine({ token }),
-            styleOptions,
+            styleOptions: { ...styleOptions, botAvatarImage: 'https://picsum.photos/64' },
           },
           this.$refs.webchatAlexandria,
         );
       })
+      // eslint-disable-next-line no-console
       .catch(error => console.error(error));
   },
 };
