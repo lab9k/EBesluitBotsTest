@@ -145,19 +145,4 @@ export default {
     }
   }
 }
-
-.test123 {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  .alexandria {
-    flex-grow: 1;
-    min-height: 50vh;
-  }
-  .nalantis {
-    flex-grow: 1;
-    min-height: 50vh;
-  }
-}
 </style>
