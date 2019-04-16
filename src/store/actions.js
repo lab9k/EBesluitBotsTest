@@ -23,7 +23,7 @@ export default {
     const url = window.URL.createObjectURL(new Blob([data.data]));
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'file.pdf'); // or any other extension
+    link.setAttribute('target', '_blank'); // or any other extension
     link.style.display = 'none';
     document.body.appendChild(link);
     link.click();
