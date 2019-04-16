@@ -134,6 +134,7 @@ export default {
         this.$store.dispatch(actions.DOWNLOAD_FILE, {
           path: item.resourceURI,
           provider: 'nalantis',
+          title: item.title,
         });
       } else {
         this.$store.dispatch(actions.DOWNLOAD_FILE, {

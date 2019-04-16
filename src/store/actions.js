@@ -9,7 +9,7 @@ export default {
 
     commit(mutations.UPDATE_REPLIES, data);
   },
-  async [actions.DOWNLOAD_FILE](state, { path, provider }) {
+  async [actions.DOWNLOAD_FILE](state, { path, provider, title }) {
     // await download(
     //   `https://chatbotsqueries.herokuapp.com/dl/download-proxy?url=${path}&name=test123.pdf&provider=nalantis`,
     // );
@@ -23,7 +23,7 @@ export default {
     const url = window.URL.createObjectURL(new Blob([data.data]));
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('target', '_blank'); // or any other extension
+    link.setAttribute('download', title); // or any other extension
     link.style.display = 'none';
     document.body.appendChild(link);
     link.click();
