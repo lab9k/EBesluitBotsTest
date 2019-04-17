@@ -15,6 +15,7 @@ export default new (class QuestionService {
       item,
       question,
       feedbackText,
+      sessionid: item.sessionid || 'Search-session',
     };
     return axios.post(`${this.baseurl}/vote`, postData);
   }

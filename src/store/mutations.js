@@ -11,6 +11,7 @@ const extractDocuments = (replies) => {
       category: cat,
       from: 'alexandria.works',
       title: d.meta.title,
+      sessionid: alexandria.sessionid,
     }));
   });
   const { conceptsOfQuery } = nalantis;
