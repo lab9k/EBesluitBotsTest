@@ -142,7 +142,9 @@ export default {
       e.preventDefault();
       if (this.valid) {
         this.loading = true;
-        this.$store.dispatch(actions.ASK_QUESTION, this.question);
+        this.$store.dispatch(actions.ASK_QUESTION, this.question).then(() => {
+          this.loading = false;
+        });
       }
     },
     downloadItem(item) {
