@@ -95,6 +95,26 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-dialog
+      v-model="loading"
+      hide-overlay
+      persistent
+      width="300"
+    >
+      <v-card
+        color="primary"
+        dark
+      >
+        <v-card-text>
+          Please stand by
+          <v-progress-linear
+            indeterminate
+            color="white"
+            class="mb-0"
+          />
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 <script>
@@ -111,6 +131,7 @@ export default {
       dialog: false,
       currentItem: {},
       feedbackText: '',
+      loading: false,
     };
   },
   computed: {
@@ -120,6 +141,7 @@ export default {
     submit(e) {
       e.preventDefault();
       if (this.valid) {
+        this.loading = true;
         this.$store.dispatch(actions.ASK_QUESTION, this.question);
       }
     },
