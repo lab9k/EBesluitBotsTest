@@ -33,4 +33,7 @@ export default {
   [mutations.REMOVE_REPLIES](state) {
     state.replies = [];
   },
+  [mutations.UPDATE_DARK_MODE](state, value) {
+    state.darkMode = value;
+  },
 };

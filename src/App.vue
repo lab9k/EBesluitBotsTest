@@ -1,5 +1,5 @@
 <template>
-  <v-app :dark="darkmodeSwitch">
+  <v-app :dark="darkMode">
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span>Digipolis</span>
@@ -19,7 +19,7 @@
         <span class="mr-2">Search</span>
       </v-btn>
       <v-switch
-        v-model="darkmodeSwitch"
+        v-model="darkMode"
         hide-details
         :label="dmswitch"
       />
@@ -32,17 +32,27 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { mutations } from './store/types';
+
 export default {
   name: 'App',
   components: {},
   data() {
-    return {
-      darkmodeSwitch: false,
-    };
+    return {};
   },
   computed: {
+    ...mapState(['darkMode']),
     dmswitch() {
-      return this.darkmodeSwitch ? 'Dark' : 'Light';
+      return this.darkMode ? 'Dark' : 'Light';
+    },
+    darkMode: {
+      get() {
+        return this.$store.state.darkMode;
+      },
+      set(value) {
+        this.$store.commit(mutations.UPDATE_DARK_MODE, value);
+      },
     },
   },
 };

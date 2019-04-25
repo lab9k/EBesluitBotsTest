@@ -181,7 +181,7 @@ export default {
 .list-tile-item {
   margin-top: 1em;
   margin-bottom: 1em;
-  border-bottom: 1px solid rgba($color: #333, $alpha: 0.3);
+  border-bottom: 1px solid rgba($color: #333, $alpha: 0.5);
 }
 .v-list--three-line .v-list__tile {
   height: 120px;
