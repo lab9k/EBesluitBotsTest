@@ -182,10 +182,6 @@ export default {
   margin-top: 1em;
   margin-bottom: 1em;
   border-bottom: 1px solid rgba($color: #333, $alpha: 0.3);
-  //background-color: whitesmoke;
-}
-.theme--light.v-list {
-  //background-color: #fafafa;
 }
 .v-list--three-line .v-list__tile {
   height: 120px;
