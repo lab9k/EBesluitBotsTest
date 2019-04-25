@@ -99,14 +99,14 @@
       v-model="loading"
       hide-overlay
       persistent
-      width="300"
+      width="350"
     >
       <v-card
         color="primary"
         dark
       >
         <v-card-text>
-          Please stand by
+          Even geduld, de documenten worden opgehaald.
           <v-progress-linear
             indeterminate
             color="white"
@@ -126,8 +126,7 @@ export default {
     return {
       valid: false,
       question: 'Waar kan ik mijn woonwagen parkeren?',
-      questionRules: [q => !!q || 'Question in required'],
-      items: [{ title: 'Hello World', icon: true }],
+      questionRules: [q => !!q || 'Gelieve een vraag in te vullen.'],
       dialog: false,
       currentItem: {},
       feedbackText: '',
@@ -182,10 +181,11 @@ export default {
 .list-tile-item {
   margin-top: 1em;
   margin-bottom: 1em;
-  background-color: whitesmoke;
+  border-bottom: 1px solid rgba($color: #333, $alpha: 0.3);
+  //background-color: whitesmoke;
 }
 .theme--light.v-list {
-  background-color: #fafafa;
+  //background-color: #fafafa;
 }
 .v-list--three-line .v-list__tile {
   height: 120px;

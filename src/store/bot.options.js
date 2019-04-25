@@ -6,7 +6,7 @@ function fontFamily(fonts) {
   return fonts.map(font => `'${font}'`).join(', ');
 }
 
-export default {
+const options = {
   // Color and paddings
   accent: DEFAULT_ACCENT,
   backgroundColor: 'White',
@@ -95,4 +95,13 @@ export default {
   failedConnectivity: '#C50F1F',
   slowConnectivity: '#EAA300',
   slowConnectivityText: '#5E5E5E',
+};
+
+export default options;
+
+export const nalantisOptions = { ...options };
+export const alexandriaOptions = {
+  ...options,
+  botAvatarInitials: 'AW',
+  botAvatarImage: 'https://picsum.photos/64',
 };

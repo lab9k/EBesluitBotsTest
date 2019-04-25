@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import styleOptions from '../store/bot.options';
+import { alexandriaOptions, nalantisOptions } from '../store/bot.options';
 
 export default {
   components: {},
@@ -42,7 +42,7 @@ export default {
         window.WebChat.renderWebChat(
           {
             directLine: window.WebChat.createDirectLine({ token }),
-            styleOptions,
+            nalantisOptions,
           },
           this.$refs.webchatNalantis,
         );
@@ -60,7 +60,7 @@ export default {
         window.WebChat.renderWebChat(
           {
             directLine: window.WebChat.createDirectLine({ token }),
-            styleOptions: { ...styleOptions, botAvatarImage: 'https://picsum.photos/64' },
+            styleOptions: alexandriaOptions,
           },
           this.$refs.webchatAlexandria,
         );

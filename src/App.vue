@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :dark="darkmodeSwitch">
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span>Digipolis</span>
@@ -18,6 +18,11 @@
       >
         <span class="mr-2">Search</span>
       </v-btn>
+      <v-switch
+        v-model="darkmodeSwitch"
+        hide-details
+        :label="dmswitch"
+      />
     </v-toolbar>
 
     <v-content>
@@ -32,8 +37,18 @@ export default {
   components: {},
   data() {
     return {
-      //
+      darkmodeSwitch: false,
     };
+  },
+  computed: {
+    dmswitch() {
+      return this.darkmodeSwitch ? 'Dark' : 'Light';
+    },
   },
 };
 </script>
+<style lang="scss" scoped>
+.v-input--switch {
+  flex: unset;
+}
+</style>
