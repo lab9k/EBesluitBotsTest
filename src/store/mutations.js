@@ -28,12 +28,16 @@ const extractDocuments = (replies) => {
 export default {
   [mutations.UPDATE_REPLIES](state, replies) {
     const docs = extractDocuments(replies);
-    state.replies = docs;
+    state.replies = docs.map((el, i) => ({ ...el, lId: i }));
   },
   [mutations.REMOVE_REPLIES](state) {
     state.replies = [];
   },
   [mutations.UPDATE_DARK_MODE](state, value) {
     state.darkMode = value;
+  },
+  [mutations.VOTE](state, { item, positive }) {
+    state.replies.find(el => el.lId === item.lId).voted = positive ? 'blue' : 'red';
+    state.replies = [...state.replies];
   },
 };

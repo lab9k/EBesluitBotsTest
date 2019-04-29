@@ -29,9 +29,10 @@ export default {
     document.body.appendChild(link);
     link.click();
   },
-  async [actions.VOTE](state, {
+  async [actions.VOTE]({ commit }, {
     state: positive, item, question, feedbackText,
   }) {
     questionService.vote(positive, item, question, feedbackText);
+    commit(mutations.VOTE, { item, positive });
   },
 };

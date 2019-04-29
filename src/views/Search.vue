@@ -26,8 +26,8 @@
         <v-flex xs12>
           <v-list three-line>
             <v-list-tile
-              v-for="(item, i) in docsOnConfidence"
-              :key="i"
+              v-for="item in docsOnConfidence"
+              :key="item.lId"
               class="list-tile-item"
             >
               <v-list-tile-avatar>
@@ -42,10 +42,16 @@
                 <v-icon @click="downloadItem(item)">
                   cloud_download
                 </v-icon>
-                <v-icon @click="vote(true,item)">
+                <v-icon
+                  :color="item.voted === 'blue' ? item.voted : undefined"
+                  @click="vote(true,item)"
+                >
                   thumb_up
                 </v-icon>
-                <v-icon @click="add_feedback(false,item)">
+                <v-icon
+                  :color="item.voted === 'red' ? item.voted : undefined"
+                  @click="add_feedback(false,item)"
+                >
                   thumb_down
                 </v-icon>
               </v-list-tile-action>
