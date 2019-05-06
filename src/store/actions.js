@@ -8,7 +8,7 @@ export default {
     const d = await questionService.query(question);
     commit(mutations.UPDATE_REPLIES, d.data);
   },
-  async [actions.DOWNLOAD_FILE](state, { path, provider }) {
+  async [actions.DOWNLOAD_FILE](state, { path, provider, title }) {
     // await download(
     //   `https://chatbotsqueries.herokuapp.com/dl/download-proxy?url=${path}&name=test123.pdf&provider=nalantis`,
     // );
@@ -22,7 +22,8 @@ export default {
     const url = window.URL.createObjectURL(new Blob([data.data]));
     const link = document.createElement('a');
     link.href = url;
-    const filename = data.headers['content-disposition'].split('filename=')[1];
+    const disposition = data.headers['content-disposition'];
+    const filename = disposition ? disposition.split('filename=')[1] : title;
     link.setAttribute('download', filename); // or any other extension
     link.style.display = 'none';
     link.style.visibility = 'hidden';
