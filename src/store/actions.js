@@ -19,13 +19,11 @@ export default {
       `${base}/dl/download-proxy?url=${path}&name=download.pdf&provider=${provider}`,
       { responseType: 'arraybuffer' },
     );
-    console.log(data);
     const url = window.URL.createObjectURL(new Blob([data.data]));
     const link = document.createElement('a');
     link.href = url;
     const disposition = data.headers['content-disposition'];
     const filename = disposition ? disposition.split('=')[1] : title;
-    console.log(filename.replace(/"/g, '').trim());
 
     link.setAttribute('download', filename.replace(/"/g, '').trim()); // or any other extension
     link.style.display = 'none';
