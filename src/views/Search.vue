@@ -112,11 +112,12 @@
         dark
       >
         <v-card-text>
-          Even geduld, de documenten worden opgehaald.
+          {{ errorMessage }}
           <v-progress-linear
             indeterminate
             color="white"
             class="mb-0"
+            :active="progressing"
           />
         </v-card-text>
       </v-card>
@@ -137,6 +138,8 @@ export default {
       currentItem: {},
       feedbackText: '',
       loading: false,
+      errorMessage: 'Even geduld, de documenten worden opgehaald.',
+      progressing: true,
     };
   },
   computed: {
@@ -147,8 +150,15 @@ export default {
       e.preventDefault();
       if (this.valid) {
         this.loading = true;
+        this.progressing = true;
+        this.errorMessage = 'Even geduld, de documenten worden opgehaald.';
         this.$store.dispatch(actions.ASK_QUESTION, this.question).then(() => {
           this.loading = false;
+          if (this.docsOnConfidence.length === 0) {
+            this.loading = true;
+            this.progressing = false;
+            this.errorMessage = 'No documents found';
+          }
         });
       }
     },
