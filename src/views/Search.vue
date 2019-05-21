@@ -24,6 +24,40 @@
     <v-container>
       <v-layout>
         <v-flex xs12>
+          <!-- <v-list three-line>
+            <v-list-tile
+              v-for="item in docsOnConfidence"
+              :key="item.lId"
+              class="list-tile-item"
+            >
+              <v-list-tile-avatar>
+                <img :src="item.avatar">
+              </v-list-tile-avatar>
+
+              <v-list-tile-content>
+                <v-list-tile-title v-text="item.title" />
+                eslint-disable-next-line vue/no-v-html
+                <v-list-tile-sub-title v-html="`${ item.content.substring(0,150) }`" />
+              </v-list-tile-content>
+              <v-list-tile-action>
+                <v-icon @click="downloadItem(item)">
+                  cloud_download
+                </v-icon>
+                <v-icon
+                  :color="item.voted === 'blue' ? item.voted : undefined"
+                  @click="vote(true,item)"
+                >
+                  thumb_up
+                </v-icon>
+                <v-icon
+                  :color="item.voted === 'red' ? item.voted : undefined"
+                  @click="add_feedback(false,item)"
+                >
+                  thumb_down
+                </v-icon>
+              </v-list-tile-action>
+            </v-list-tile>
+          </v-list> -->
           <v-expansion-panel>
             <v-expansion-panel-content
               v-for="item in docsOnConfidence"
@@ -54,7 +88,7 @@
                   <v-flex
                     xs7
                     class="grey--text"
-                    v-html="item.content.substring(0,150)"
+                    v-html="item.content.substring(0,200)"
                   />
                   <!-- eslint-enable vue/no-v-html -->
                 </v-layout>
@@ -91,6 +125,50 @@
                     <!-- eslint-enable vue/no-v-html -->
                   </v-layout>
                 </v-card-text>
+                <v-card-actions>
+                  <!-- <v-icon @click="downloadItem(item)">
+                    cloud_download
+                  </v-icon>
+                  <v-icon
+                    :color="item.voted === 'blue' ? item.voted : undefined"
+                    @click="vote(true,item)"
+                  >
+                    thumb_up
+                  </v-icon>
+                  <v-icon
+                    :color="item.voted === 'red' ? item.voted : undefined"
+                    @click="add_feedback(false,item)"
+                  >
+                    thumb_down
+                  </v-icon> -->
+                  <v-list-tile class="grow">
+                    <v-layout
+                      align-center
+                      justify-end
+                    >
+                      <v-icon
+                        class="mr-1"
+                        @click="downloadItem(item)"
+                      >
+                        cloud_download
+                      </v-icon>
+                      <span class="subheading mr-4">Download</span>
+                      <v-icon
+                        :color="item.voted === 'blue' ? item.voted : undefined"
+                        class="mr-2"
+                        @click="vote(true,item)"
+                      >
+                        thumb_up
+                      </v-icon>
+                      <v-icon
+                        :color="item.voted === 'red' ? item.voted : undefined"
+                        @click="add_feedback(false,item)"
+                      >
+                        thumb_down
+                      </v-icon>
+                    </v-layout>
+                  </v-list-tile>
+                </v-card-actions>
               </v-card>
             </v-expansion-panel-content>
           </v-expansion-panel>
