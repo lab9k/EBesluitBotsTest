@@ -10,8 +10,9 @@ const extractDocuments = (replies) => {
       ...d,
       category: cat,
       from: 'alexandria.works',
-      title: d.meta.title,
+      title: d.filename,
       sessionid: alexandria.sessionid,
+      highlight: d.meta.description,
     }));
   });
   const { conceptsOfQuery } = nalantis;
@@ -20,6 +21,8 @@ const extractDocuments = (replies) => {
     conceptsOfQuery,
     from: 'nalantis',
     title: d.originalURI,
+    content: d.highlighting.join(''),
+    highlight: d.paragraphs ? d.paragraphs[0].content : d.highlighting.join(''),
   }));
 
   return [...alexandriaDocs, ...nalantisDocs];

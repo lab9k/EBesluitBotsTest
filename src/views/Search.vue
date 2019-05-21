@@ -24,39 +24,76 @@
     <v-container>
       <v-layout>
         <v-flex xs12>
-          <v-list three-line>
-            <v-list-tile
+          <v-expansion-panel>
+            <v-expansion-panel-content
               v-for="item in docsOnConfidence"
               :key="item.lId"
-              class="list-tile-item"
+              hide-actions
             >
-              <v-list-tile-avatar>
-                <img :src="item.avatar">
-              </v-list-tile-avatar>
-
-              <v-list-tile-content>
-                <v-list-tile-title v-text="item.title" />
-                <v-list-tile-sub-title v-text="`${ item.content.substring(0,150) }`" />
-              </v-list-tile-content>
-              <v-list-tile-action>
-                <v-icon @click="downloadItem(item)">
-                  cloud_download
-                </v-icon>
-                <v-icon
-                  :color="item.voted === 'blue' ? item.voted : undefined"
-                  @click="vote(true,item)"
+              <template v-slot:header>
+                <v-layout
+                  align-center
+                  row
+                  spacer
                 >
-                  thumb_up
-                </v-icon>
-                <v-icon
-                  :color="item.voted === 'red' ? item.voted : undefined"
-                  @click="add_feedback(false,item)"
-                >
-                  thumb_down
-                </v-icon>
-              </v-list-tile-action>
-            </v-list-tile>
-          </v-list>
+                  <v-flex xs1>
+                    <v-avatar size="64px">
+                      <img
+                        :src="item.avatar"
+                        :alt="`${item.from} avatar`"
+                      >
+                    </v-avatar>
+                  </v-flex>
+                  <v-flex
+                    xs4
+                    class="text-xs-center"
+                  >
+                    <strong>{{ item.title }}</strong>
+                  </v-flex>
+                  <!-- eslint-disable vue/no-v-html -->
+                  <v-flex
+                    xs7
+                    class="grey--text"
+                    v-html="item.content.substring(0,150)"
+                  />
+                  <!-- eslint-enable vue/no-v-html -->
+                </v-layout>
+              </template>
+              <v-card light>
+                <v-divider />
+                <v-card-text>
+                  <v-layout
+                    align-center
+                    row
+                    class="mb-2"
+                  >
+                    <v-flex xs2>
+                      <strong>From:</strong>
+                    </v-flex>
+                    <v-flex xs10>
+                      {{ item.from }}
+                    </v-flex>
+                  </v-layout>
+                  <v-divider />
+                  <v-layout
+                    align-center
+                    row
+                  >
+                    <v-flex xs2>
+                      <strong>Highlighting:</strong>
+                    </v-flex>
+                    <!-- eslint-disable vue/no-v-html -->
+                    <v-flex
+                      xs10
+                      justify-center
+                      v-html="item.highlight"
+                    />
+                    <!-- eslint-enable vue/no-v-html -->
+                  </v-layout>
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
         </v-flex>
       </v-layout>
     </v-container>
@@ -129,6 +166,7 @@ import { mapGetters } from 'vuex';
 import { actions } from '../store/types';
 
 export default {
+  name: 'Search',
   data() {
     return {
       valid: false,
