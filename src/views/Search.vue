@@ -62,7 +62,6 @@
             <v-expansion-panel-content
               v-for="item in docsOnConfidence"
               :key="item.lId"
-              hide-actions
             >
               <template v-slot:header>
                 <v-layout
