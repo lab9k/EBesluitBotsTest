@@ -19,6 +19,7 @@ const extractDocuments = (replies) => {
   const nalantisDocs = nalantis.documents.map(d => ({
     ...d,
     conceptsOfQuery,
+    category: conceptsOfQuery.join(', '),
     from: 'nalantis',
     title: d.originalURI,
     content: d.highlighting.join(''),

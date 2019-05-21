@@ -111,6 +111,7 @@
                   <v-layout
                     align-center
                     row
+                    class="py-2"
                   >
                     <v-flex xs2>
                       <strong>Highlighting:</strong>
@@ -122,6 +123,23 @@
                       v-html="item.highlight"
                     />
                     <!-- eslint-enable vue/no-v-html -->
+                  </v-layout>
+                  <v-divider />
+                  <v-layout
+                    align-center
+                    row
+                    class="pt-3"
+                  >
+                    <v-flex xs2>
+                      <strong>Concepts:</strong>
+                    </v-flex>
+
+                    <v-flex
+                      xs10
+                      justify-center
+                    >
+                      {{ item.category }}
+                    </v-flex>
                   </v-layout>
                 </v-card-text>
                 <v-card-actions>
