@@ -9,4 +9,7 @@ export default {
   displaySearchTogether({ displaySearchTogether }) {
     return displaySearchTogether;
   },
+  darkMode({ darkMode }) {
+    return darkMode;
+  },
 };

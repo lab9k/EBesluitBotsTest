@@ -19,8 +19,15 @@
             </v-flex>
             <!-- eslint-disable vue/no-v-html -->
             <v-flex
+              v-if="!darkMode"
               xs8
               class="grey--text text--darken-4"
+              v-html="item.content.substring(0,200)"
+            />
+            <v-flex
+              v-else
+              xs8
+              class="grey--text text--lighten-4"
               v-html="item.content.substring(0,200)"
             />
             <!-- eslint-enable vue/no-v-html -->
@@ -174,7 +181,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['docsOnConfidence']),
+    ...mapGetters(['docsOnConfidence', 'darkMode']),
     documents() {
       if (this.provider.indexOf('|') > -1) {
         return this.docsOnConfidence;
