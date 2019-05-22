@@ -44,4 +44,7 @@ export default {
     state.replies.find(el => el.lId === item.lId).voted = positive ? 'blue' : 'red';
     state.replies = [...state.replies];
   },
+  [mutations.UPDATE_DISPLAY_TOGETHER](state, value) {
+    state.displaySearchTogether = value;
+  },
 };

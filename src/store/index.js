@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     replies: [],
     darkMode: false,
+    displaySearchTogether: false,
   },
   mutations,
   actions,

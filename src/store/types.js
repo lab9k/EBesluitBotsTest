@@ -8,5 +8,6 @@ export const mutations = {
   REMOVE_REPLIES: 'remove_replies',
   UPDATE_DARK_MODE: 'UPDATE_DARK_MODE',
   VOTE: 'UPDATE_VOTE_FOR_ITEM',
+  UPDATE_DISPLAY_TOGETHER: 'display_update_together',
 };
 export default { actions, mutations };

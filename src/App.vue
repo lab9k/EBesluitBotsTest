@@ -22,6 +22,13 @@
         v-model="darkMode"
         hide-details
         :label="dmswitch"
+        class="mx-3"
+      />
+      <v-switch
+        v-if="$route.name ==='search'"
+        v-model="displayTogether"
+        hide-details
+        :label="togetherSwitch"
       />
     </v-toolbar>
 
@@ -32,7 +39,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
 import { mutations } from './store/types';
 
 export default {
@@ -42,9 +49,12 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(['darkMode']),
+    // ...mapState(['darkMode']),
     dmswitch() {
       return this.darkMode ? 'Dark' : 'Light';
+    },
+    togetherSwitch() {
+      return this.displayTogether ? 'As one' : 'Seperate';
     },
     darkMode: {
       get() {
@@ -52,6 +62,14 @@ export default {
       },
       set(value) {
         this.$store.commit(mutations.UPDATE_DARK_MODE, value);
+      },
+    },
+    displayTogether: {
+      get() {
+        return this.$store.state.displaySearchTogether;
+      },
+      set(value) {
+        this.$store.commit(mutations.UPDATE_DISPLAY_TOGETHER, value);
       },
     },
   },
