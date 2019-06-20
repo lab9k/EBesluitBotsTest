@@ -54,7 +54,7 @@ export default {
       return this.darkMode ? 'Dark' : 'Light';
     },
     togetherSwitch() {
-      return this.displayTogether ? 'As one' : 'Seperate';
+      return this.displayTogether ? 'As one' : 'Separate';
     },
     darkMode: {
       get() {
