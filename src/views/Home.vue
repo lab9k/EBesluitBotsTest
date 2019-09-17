@@ -16,8 +16,8 @@
             Citybot Nalantis
           </h1>
           <div
+            id="webchat"
             ref="webchatNalantis"
-            style="width: 90%; min-height: 70vh; margin:0 auto; max-height: 70vh"
           />
         </div>
       </div>
@@ -144,5 +144,19 @@ export default {
       min-height: 100%;
     }
   }
+}
+#webchat > * {
+  width: 90%;
+  min-height: 70vh;
+  margin: 0 auto;
+  height: 100%;
+  max-height: 70vh !important;
+}
+#webchat {
+  width: 90%;
+  min-height: 70vh;
+  margin: 0 auto;
+  height: 100%;
+  max-height: 70vh;
 }
 </style>
