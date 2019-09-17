@@ -24,12 +24,12 @@
         :label="dmswitch"
         class="mx-3"
       />
-      <v-switch
+      <!-- <v-switch
         v-if="$route.name ==='search'"
         v-model="displayTogether"
         hide-details
         :label="togetherSwitch"
-      />
+      /> -->
     </v-toolbar>
 
     <v-content>

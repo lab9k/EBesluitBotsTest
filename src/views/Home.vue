@@ -2,7 +2,7 @@
   <div>
     <div class="outer">
       <div class="container">
-        <div class="element">
+        <!-- <div class="element">
           <h1 class="toggle">
             Alexandria.Works
           </h1>
@@ -10,7 +10,7 @@
             ref="webchatAlexandria"
             style="width: 90%; min-height: 70vh; margin:0 auto; max-height: 70vh"
           />
-        </div>
+        </div> -->
         <div class="element">
           <h1 class="toggle">
             Citybot Nalantis

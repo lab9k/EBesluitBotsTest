@@ -2,19 +2,22 @@ import { mutations } from './types';
 
 const extractDocuments = (replies) => {
   const { nalantis, alexandria } = replies;
+  let alexandriaDocs = [];
+  if (alexandria.results) {
+    alexandriaDocs = alexandria.results.flatMap((res) => {
+      const cat = res.category.description;
+      const docs = res.category.documents;
+      return docs.map(d => ({
+        ...d,
+        category: cat,
+        from: 'alexandria.works',
+        title: d.filename,
+        sessionid: alexandria.sessionid,
+        highlight: d.meta.description,
+      }));
+    });
+  }
 
-  const alexandriaDocs = alexandria.results.flatMap((res) => {
-    const cat = res.category.description;
-    const docs = res.category.documents;
-    return docs.map(d => ({
-      ...d,
-      category: cat,
-      from: 'alexandria.works',
-      title: d.filename,
-      sessionid: alexandria.sessionid,
-      highlight: d.meta.description,
-    }));
-  });
   const { conceptsOfQuery } = nalantis;
   const nalantisDocs = nalantis.documents.map(d => ({
     ...d,
