@@ -15,6 +15,9 @@
           <h1 class="toggle">
             Citybot Nalantis
           </h1>
+          <p>
+            Citybot beantwoordt je vragen over de besluiten van de gemeenteraad.
+          </p>
           <div
             id="webchat"
             ref="webchatNalantis"

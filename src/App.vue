@@ -1,28 +1,32 @@
 <template>
   <v-app :dark="darkMode">
-    <v-toolbar app>
+    <v-toolbar
+      app
+      style="background-color:#007DB3;"
+    >
       <v-toolbar-title class="headline text-uppercase">
-        <span>Digipolis</span>
-        <span class="font-weight-light">NLP-CHATBOTS</span>
+        <span class="white--text">CITYBOT</span>
+        <!-- <span class="font-weight-light">NLP-CHATBOTS</span> -->
       </v-toolbar-title>
       <v-spacer />
       <v-btn
         flat
         to="/"
       >
-        <span class="mr-2">Bots</span>
+        <span class="mr-2 white--text">Chatbot</span>
       </v-btn>
       <v-btn
         flat
         to="/search"
       >
-        <span class="mr-2">Search</span>
+        <span class="mr-2 white--text">Zoeken</span>
       </v-btn>
       <v-switch
         v-model="darkMode"
         hide-details
         :label="dmswitch"
-        class="mx-3"
+        class="mx-3 white--text"
+        dark
       />
       <!-- <v-switch
         v-if="$route.name ==='search'"
@@ -51,10 +55,10 @@ export default {
   computed: {
     // ...mapState(['darkMode']),
     dmswitch() {
-      return this.darkMode ? 'Dark' : 'Light';
+      return this.darkMode ? 'Donker' : 'Licht';
     },
     togetherSwitch() {
-      return this.displayTogether ? 'As one' : 'Separate';
+      return this.displayTogether ? 'Samen' : 'Apart';
     },
     darkMode: {
       get() {
