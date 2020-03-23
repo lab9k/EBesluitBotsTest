@@ -17,25 +17,28 @@ const extractDocuments = (replies) => {
       }));
     });
   }
+  let nalantisDocs = [];
+  if (nalantis.documents) {
+    const { conceptsOfQuery } = nalantis;
+    nalantisDocs = nalantis.documents.map((d) => {
+      let highlight = '';
+      if (d.paragraphs && d.paragraphs.length > 0) {
+        highlight = d.paragraphs[0].content;
+      } else {
+        highlight = d.summary;
+      }
+      return {
+        ...d,
+        conceptsOfQuery,
+        category: conceptsOfQuery.join(', '),
+        from: 'nalantis',
+        title: d.originalURI,
+        content: d.summary,
+        highlight,
+      };
+    });
+  }
 
-  const { conceptsOfQuery } = nalantis;
-  const nalantisDocs = nalantis.documents.map((d) => {
-    let highlight = '';
-    if (d.paragraphs && d.paragraphs.length > 0) {
-      highlight = d.paragraphs[0].content;
-    } else {
-      highlight = d.summary;
-    }
-    return {
-      ...d,
-      conceptsOfQuery,
-      category: conceptsOfQuery.join(', '),
-      from: 'nalantis',
-      title: d.originalURI,
-      content: d.summary,
-      highlight,
-    };
-  });
 
   return [...alexandriaDocs, ...nalantisDocs];
 };

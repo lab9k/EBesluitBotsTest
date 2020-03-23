@@ -55,6 +55,7 @@
       hide-overlay
       persistent
       width="350"
+      dark
     >
       <v-card
         color="primary"

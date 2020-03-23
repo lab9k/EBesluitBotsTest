@@ -10,14 +10,12 @@
             ref="webchatAlexandria"
             style="width: 90%; min-height: 70vh; margin:0 auto; max-height: 70vh"
           />
-        </div> -->
+        </div>-->
         <div class="element">
           <h1 class="toggle">
             Citybot Nalantis
           </h1>
-          <p>
-            Citybot beantwoordt je vragen over de besluiten van de gemeenteraad.
-          </p>
+          <p>Citybot beantwoordt je vragen over de besluiten van de gemeenteraad.</p>
           <div
             id="webchat"
             ref="webchatNalantis"
@@ -29,7 +27,7 @@
 </template>
 
 <script>
-import { alexandriaOptions, nalantisOptions } from '../store/bot.options';
+import { nalantisOptions } from '../store/bot.options';
 
 export default {
   components: {},
@@ -52,24 +50,24 @@ export default {
       })
       // eslint-disable-next-line no-console
       .catch(error => console.error(error));
-    fetch('https://webchat.botframework.com/api/tokens', {
-      headers: {
-        Authorization: 'Botconnector SL069aFOrKE.E2WHjUq125m5SzdtToxE7MobXU4o7WlFmWeaYlv2H54',
-      },
-    })
-      .then(res => res.text())
-      .then(t => t.split('"')[1])
-      .then((token) => {
-        window.WebChat.renderWebChat(
-          {
-            directLine: window.WebChat.createDirectLine({ token }),
-            styleOptions: alexandriaOptions,
-          },
-          this.$refs.webchatAlexandria,
-        );
-      })
-      // eslint-disable-next-line no-console
-      .catch(error => console.error(error));
+    // fetch('https://webchat.botframework.com/api/tokens', {
+    //   headers: {
+    //     Authorization: 'Botconnector SL069aFOrKE.E2WHjUq125m5SzdtToxE7MobXU4o7WlFmWeaYlv2H54',
+    //   },
+    // })
+    //   .then(res => res.text())
+    //   .then(t => t.split('"')[1])
+    //   .then((token) => {
+    //     window.WebChat.renderWebChat(
+    //       {
+    //         directLine: window.WebChat.createDirectLine({ token }),
+    //         styleOptions: alexandriaOptions,
+    //       },
+    //       this.$refs.webchatAlexandria,
+    //     );
+    //   })
+    //   // eslint-disable-next-line no-console
+    //   .catch(error => console.error(error));
   },
 };
 </script>
@@ -92,7 +90,7 @@ export default {
           border-radius: 20px 0 0 20px;
           padding: 0 1.5em;
           margin: 0;
-          font: 400 1em/46px "Lato", Arial;
+          font: 400 1em/46px 'Lato', Arial;
           border: 0;
           height: 46px;
           width: 100%;

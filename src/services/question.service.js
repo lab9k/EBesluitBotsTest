@@ -22,5 +22,5 @@ export default new (class QuestionService {
 })(
   process.env.NODE_ENV === 'production'
     ? 'https://chatbotsqueries.herokuapp.com'
-    : 'http://localhost:3000',
+    : 'https://chatbotsqueries.herokuapp.com',
 );
